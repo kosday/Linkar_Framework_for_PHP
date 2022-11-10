@@ -3,7 +3,7 @@ include_once realpath( __DIR__ . '/../Linkar.Functions/LinkarFunctions.php');
 include_once realpath( __DIR__ . '/../Linkar.Functions.Direct/DirectFunctions.php');
 
 /*
-	abstract class: XML output formats for Read, Update, New and Select
+	abstract class: XML output formats for Read, Update, New, Select and LkProperties
 	
 		Defined constants of XML_FORMAT:
 	
@@ -655,6 +655,7 @@ class Functions {
 				OTHERLANGUAGES - Languages list separated by commas.
 				TABLEROWSEPARATOR - It is the decimal char that you use to separate the rows in the output table format. By default 11.
 				TABLECOLSEPARATOR - It is the decimal char that you use to separate the columns in the output table format. By default 9.
+				CONVERTNUMBOOLJSON - Switch to create numeric and boolean data in JSON strings. Default is false.
 
 		Example:
 		--- Code
@@ -745,6 +746,7 @@ class Functions {
 			$credentialOptions - (<CredentialOptions>) Object with data necessary to access the Linkar Server: Username, Password, EntryPoint, Language, FreeText.
 			$filename - (string) File name to LkProperties.
 			$lkPropertiesOptions - (<LkPropertiesOptions>) This object defines the different options in base of the asked Schema Type: LKSCHEMAS, SQLMODE o DICTIONARIES.
+			$xmlFormat - (<XML_FORMAT>) Specifies the desired output format: standard XML, XML_DICT format, or XML_SCH format
 			$customVars - (string) Free text sent to the database allows management of additional behaviours in SUB.LK.MAIN.CONTROL.CUSTOM, which is called when this parameter is set.
 			$receiveTimeout - (number) Maximum time in seconds that the client will wait for a response from the server. Default = 0 to wait indefinitely.
 		
@@ -753,14 +755,6 @@ class Functions {
 			
 			The results of the operation.
 		
-		Remarks:
-			TABLE output format uses the defined control characters in <EntryPoints Parameters: http://kosday.com/Manuals/en_web_linkar/lk_schemas_ep_parameters.html> Table Row Separator and Column Row Separator.
-			
-			By default:
-			
-				TAB - char (9) for columns.
-				VT - char (11) for rows.
-
 		Example:
 		--- Code
 		<?php
@@ -783,10 +777,10 @@ class Functions {
 		?>
 		---
 	*/
-	static function LkProperties($credentialOptions, $filename, $lkPropertiesOptions = null,
+	static function LkProperties($credentialOptions, $filename, $lkPropertiesOptions = null, $xmlFormat = XML_FORMAT::XML,
 		$customVars = "", $receiveTimeout = 0) {
 		return DirectFunctions::LkProperties($credentialOptions, $filename, $lkPropertiesOptions,
-			DATAFORMATSCH_TYPE::XML, $customVars, $receiveTimeout);
+			$xmlFormat, $customVars, $receiveTimeout);
 	}
 	
 	/*

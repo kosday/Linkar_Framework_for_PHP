@@ -5,6 +5,7 @@ include_once realpath( __DIR__ . '/DBMV_Mark.php');
 include_once realpath( __DIR__ . '/DATAFORMAT_TYPE.php');
 include_once realpath( __DIR__ . '/DATAFORMATCRU_TYPE.php');
 include_once realpath( __DIR__ . '/DATAFORMATSCH_TYPE.php');
+include_once realpath( __DIR__ . '/DATAFORMATSCHPROP_TYPE.php');
 include_once realpath( __DIR__ . '/CONVERSION_TYPE.php');
 include_once realpath( __DIR__ . '/ROWHEADERS_TYPE.php');
 

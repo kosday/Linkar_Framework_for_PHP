@@ -1,8 +1,8 @@
 <?php
 /*
     class: DATAFORMATSCH_TYPE
-	    Specify the output formats of LkSchemas and LkProperties operations.
-	    Used only by LkSchemas and LkProperties functions.
+	    Specify the output formats of LkSchemas operations.
+	    Used only by LkSchemas functions.
 	    There are 4 possible options: MV, XML, JSON and TABLE.
 		
 	Defined constants of DATAFORMATSCH_TYPE:

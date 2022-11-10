@@ -468,6 +468,7 @@ class LinkarClient {
 				OTHERLANGUAGES - Languages list separated by commas.
 				TABLEROWSEPARATOR - It is the decimal char that you use to separate the rows in the output table format. By default 11.
 				TABLECOLSEPARATOR - It is the decimal char that you use to separate the columns in the output table format. By default 9.
+				CONVERTNUMBOOLJSON - Switch to create numeric and boolean data in JSON strings. Default is false.
 	*/
 	public function GetVersion($outputFormat = DATAFORMAT_TYPE::MV, $receiveTimeout = 0) {
 		$opArgs = OperationArguments::GetVersionArgs();        
@@ -521,7 +522,7 @@ class LinkarClient {
 		Arguments:
 			$filename - (string) File name to LkProperties.
 			$lkPropertiesOptions - (<LkPropertiesOptions>) This object defines the different options in base of the asked Schema Type: LKSCHEMAS, SQLMODE o DICTIONARIES.
-			$outputFormat - (<DATAFORMATSCH_TYPE>) Indicates in what format you want to receive the data resulting from the operation: MV, XML, JSON or TABLE.
+			$outputFormat - (<DATAFORMATSCHPROP_TYPE>) Indicates in what format you want to receive the data resulting from the operation: MV, XML, JSON or TABLE.
 			$customVars - (string) Free text sent to the database allows management of additional behaviours in SUB.LK.MAIN.CONTROL.CUSTOM, which is called when this parameter is set.
 			$receiveTimeout - (number) Maximum time in seconds that the client will wait for a response from the server. Default = 0 to wait indefinitely.
 		
@@ -539,7 +540,7 @@ class LinkarClient {
 				VT - char (11) for rows.
 	*/
 	public function LkProperties($filename, $lkPropertiesOptions = null,
-		$outputFormat = DATAFORMATSCH_TYPE::MV, $customVars = "", $receiveTimeout = 0) {
+		$outputFormat = DATAFORMATSCHPROP_TYPE::MV, $customVars = "", $receiveTimeout = 0) {
         if(is_null($lkPropertiesOptions)) {
             $lkPropertiesOptions = new LkPropertiesOptions();
         }
